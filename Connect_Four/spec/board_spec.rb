@@ -18,5 +18,24 @@ RSpec.describe Board do
 
         expect(board.grid[5][0]).to eq('X')
     end
+
+    it 'stacks pieces in the same column' do
+        board = Board.new
+      
+        board.drop_piece(0, 'X')
+        board.drop_piece(0, 'O')
+      
+        expect(board.grid[5][0]).to eq('X')
+        expect(board.grid[4][0]).to eq('O')
+    end
+
+    it 'returns false when the column is full' do
+        board = Board.new
+      
+        6.times { board.drop_piece(0, 'X') }
+      
+        expect(board.drop_piece(0, 'O')).to be false
+    end
+
   end
 end
