@@ -9,4 +9,14 @@ RSpec.describe Board do
       expect(board.grid[0].length).to eq(7)
     end
   end
+
+  describe '#drop_piece' do
+    it 'places a piece at the bottom of the chosen column' do
+        board = Board.new
+
+        board.drop_piece(0, 'X')
+
+        expect(board.grid[5][0]).to eq('X')
+    end
+  end
 end
